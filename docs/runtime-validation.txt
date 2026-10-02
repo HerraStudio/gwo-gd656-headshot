@@ -1,0 +1,12 @@
+GD_GWO_HEADSHOT_PASS: real bullet kill damageType2 -> actual S2C -> one headshot icon/texture
+GD_GWO_BODYSHOT_PASS: original normal kill flow, one default texture/icon
+GD_GWO_STALE_HIT_PASS: original nonlethal damage, next body fatal uses default icon
+GD_GWO_PIERCING_PASS: same bullet first head/second body, distinct victims, exactly two matching icons
+GD_GWO_AP_PASS: armor-piercing GWO DamageSource follows same original head result
+GWO_KILLICON_BODY_CASE head_nonlethal hp=92.0 ticks=1 precisePart=HEAD canceled=false
+GWO_KILLICON_BODY_CASE head_then_body_lethal hp=0.0 ticks=1 precisePart=BODY canceled=false
+GWO_KILLICON_BODY_CASE body_nonlethal hp=96.0 ticks=1 precisePart=BODY canceled=false
+GWO_KILLICON_BODY_CASE bars_gap_19m_head hp=0.0 ticks=2 precisePart=HEAD canceled=false
+GWO_KILLICON_BODY_CASE bars_gap_19m_body hp=0.0 ticks=2 precisePart=BODY canceled=false
+GWO_KILLICON_BODY_COMPAT_PASS shots=5 assertions=54 native_bullet_ticks=true exact_bone_parts=true head_damage=8 body_damage=4 bars_19m_multi_tick=true stale_head_then_body_cleared=true
+GD_GWO_NATIVE_SMOKE_PASS: real GWO head/body/AP/piercing/nonlethal, GD server+client, no damage mutation/no duplicate feed

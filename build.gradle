@@ -1,0 +1,36 @@
+plugins { id 'java-library'; id 'net.neoforged.moddev' version '2.0.147' }
+version = providers.gradleProperty('mod_version').get()
+group = 'dev.herrastudio.gwokillicon'
+base.archivesName = 'gwo-gd656-headshot-1.21.1-neoforge'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.withSourcesJar()
+repositories { mavenCentral() }
+neoForge {
+    version = providers.gradleProperty('neo_version').get()
+    runs {
+        client {
+            client()
+            gameDirectory = file('run-smoke')
+        }
+        server {
+            server()
+            gameDirectory = file('run-server-smoke')
+            programArgument '--nogui'
+        }
+    }
+    mods { gwo_gd656_headshot { sourceSet(sourceSets.main) } }
+}
+dependencies {
+    implementation files('libs/gwo.jar', 'libs/gd656killicon.jar')
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+test { useJUnitPlatform() }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(Jar).configureEach { from('LICENSE'); includeEmptyDirs = false }
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand(version: project.version) }
+}
+if (providers.gradleProperty('smoke').isPresent()) { sourceSets.main.java.srcDir 'src/smoke/java' }

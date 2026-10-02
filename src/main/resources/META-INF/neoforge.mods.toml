@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="gwo_gd656_headshot"
+version="${version}"
+displayName="GWO / GD656 Headshot Compat"
+description='''Bridges GWO's original headshot result into GD656Killicon's existing headshot kill effects without changing damage or sending duplicate kill packets.'''
+[[mixins]]
+config="gwo_gd656_headshot.mixins.json"
+[[dependencies.gwo_gd656_headshot]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+side="BOTH"
+[[dependencies.gwo_gd656_headshot]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.233,21.2)"
+side="BOTH"
+[[dependencies.gwo_gd656_headshot]]
+modId="gwo"
+type="required"
+versionRange="[2.12.87]"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.gwo_gd656_headshot]]
+modId="gd656killicon"
+type="required"
+versionRange="[1.1.0.020-1.21.1-neoforge]"
+ordering="AFTER"
+side="BOTH"

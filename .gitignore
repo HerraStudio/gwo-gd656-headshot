@@ -1,0 +1,13 @@
+/.gradle/
+/build/
+/run-*/
+/.audit/
+/outputs/
+/libs/*.jar
+*.log
+*.hprof
+/.idea/
+/.vscode/
+*.iml
+Desktop.ini
+Thumbs.db
